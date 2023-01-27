@@ -1,0 +1,1 @@
+ALTER TABLE movies DROP CONSTRAINT IF EXISTS version_control_check;

@@ -1,0 +1,1 @@
+ALTER TABLE movies ADD CONSTRAINT version_control_check CHECK (version < 10);
