@@ -1,4 +1,8 @@
-module greenlight.aslan
+## Back-end on Golang (___only for study purposes___)
+### *All external modules that you need:*
+
+```
+module {your_module_name}
 
 go 1.19
 
@@ -10,3 +14,4 @@ require (
 	golang.org/x/time v0.3.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 )
+```
