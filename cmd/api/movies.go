@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"greenlight.aslan/internal/data"
 	"greenlight.aslan/internal/validator"
+	"log"
 	"net/http"
 )
 
@@ -81,6 +82,7 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 func (app *application) updateMovieHandler(w http.ResponseWriter, r *http.Request) {
 
 	id, err := app.readIDParam(r)
+	log.Print(id)
 	if err != nil {
 		app.notFoundResponse(w, r)
 		return
@@ -96,7 +98,6 @@ func (app *application) updateMovieHandler(w http.ResponseWriter, r *http.Reques
 		}
 		return
 	}
-
 	var input struct {
 		Title   *string       `json:"title"`
 		Year    *int32        `json:"year"`

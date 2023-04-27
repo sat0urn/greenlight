@@ -77,7 +77,7 @@ func (d DirectorModel) GetAll(name string, filters Filters) ([]*Director, Metada
 		return nil, Metadata{}, err
 	}
 
-	metadata := calculateMetadata(totalRecords, filters.Page, filters.PageSize)
+	metadata := CalculateMetadata(totalRecords, filters.Page, filters.PageSize)
 
 	return directors, metadata, nil
 }

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"greenlight.aslan/internal/data"
 	"greenlight.aslan/internal/validator"
+	"log"
 	"net/http"
 	"time"
 )
@@ -36,7 +37,6 @@ func (app *application) registerUserHandler(w http.ResponseWriter, r *http.Reque
 	}
 
 	v := validator.New()
-
 	if data.ValidateUser(v, user); !v.Valid() {
 		app.failedValidationResponse(w, r, v.Errors)
 		return
@@ -66,10 +66,12 @@ func (app *application) registerUserHandler(w http.ResponseWriter, r *http.Reque
 			"userID":          token.UserID,
 		}
 
+		log.Print("OK1")
 		err = app.mailer.Send(user.Email, "user_welcome.tmpl", data)
 		if err != nil {
 			app.logger.PrintError(err, nil)
 		}
+		log.Print("OK3")
 	})
 
 	err = app.writeJSON(w, http.StatusCreated, envelope{"user": user}, nil)

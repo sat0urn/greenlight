@@ -5,6 +5,7 @@ import (
 	"embed"
 	"github.com/go-mail/mail/v2"
 	"html/template"
+	"log"
 	"time"
 )
 
@@ -31,6 +32,8 @@ func (m Mailer) Send(recipient, templateFile string, data any) error {
 	if err != nil {
 		return err
 	}
+
+	log.Print("OK2")
 
 	subject := new(bytes.Buffer)
 	err = tmpl.ExecuteTemplate(subject, "subject", data)
